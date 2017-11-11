@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="cn">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="jeb," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CKCat Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="[TOC] JEB 1.5脚本编写1. 环境配置如果不需要代码补全功能，可以忽略此步骤   IDE环境： PyCharm Python版本： Python2.7.6  使用JythonHelper插件, 生成skeleton从而有基本的代码补全   随便新建一个工程，在设置中Other Setting–&amp;gt;Jpthon Helper中添加jeb.jar; 此处一定要注意选择与Python的对应">
+<meta name="keywords" content="jeb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jeb 1.5脚本编写">
+<meta property="og:url" content="http://yoursite.com/2017/11/11/JEB 1.5脚本编写/index.html">
+<meta property="og:site_name" content="CKCat Blog">
+<meta property="og:description" content="[TOC] JEB 1.5脚本编写1. 环境配置如果不需要代码补全功能，可以忽略此步骤   IDE环境： PyCharm Python版本： Python2.7.6  使用JythonHelper插件, 生成skeleton从而有基本的代码补全   随便新建一个工程，在设置中Other Setting–&amp;gt;Jpthon Helper中添加jeb.jar; 此处一定要注意选择与Python的对应">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/aa59003aly1fhppbg6ynyj20sd089mxf.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/aa59003aly1fhppvzbqs2j20df02wwea.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/aa59003aly1fhpq0jdu88j20if0a70tu.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/aa59003aly1fhpq1ljg9zj20dw06p3yu.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/aa59003aly1fhpq2tk7zhj2095084mxj.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/aa59003aly1fhpq3143g8j20bp0dxmy2.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/aa59003aly1fhpq64dfxgj20ax04r743.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/aa59003aly1fhpq37jq6rj20m50ctdh2.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/aa59003aly1fhpq3rymokj20gu0bz0to.jpg">
+<meta property="og:updated_time" content="2017-11-11T09:35:58.619Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jeb 1.5脚本编写">
+<meta name="twitter:description" content="[TOC] JEB 1.5脚本编写1. 环境配置如果不需要代码补全功能，可以忽略此步骤   IDE环境： PyCharm Python版本： Python2.7.6  使用JythonHelper插件, 生成skeleton从而有基本的代码补全   随便新建一个工程，在设置中Other Setting–&amp;gt;Jpthon Helper中添加jeb.jar; 此处一定要注意选择与Python的对应">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/aa59003aly1fhppbg6ynyj20sd089mxf.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/11/JEB 1.5脚本编写/"/>
+
+
+
+
+
+  <title>jeb 1.5脚本编写 | CKCat Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CKCat Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/JEB 1.5脚本编写/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CKCat">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CKCat Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jeb 1.5脚本编写</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-11T16:53:20+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1 id="JEB-1-5脚本编写"><a href="#JEB-1-5脚本编写" class="headerlink" title="JEB 1.5脚本编写"></a>JEB 1.5脚本编写</h1><h2 id="1-环境配置"><a href="#1-环境配置" class="headerlink" title="1. 环境配置"></a>1. 环境配置</h2><p><strong>如果不需要代码补全功能，可以忽略此步骤 </strong></p>
+<ul>
+<li>IDE环境： PyCharm</li>
+<li>Python版本： Python2.7.6 </li>
+<li>使用<code>JythonHelper</code>插件, 生成skeleton从而有基本的代码补全</li>
+</ul>
+<blockquote>
+<h3 id="随便新建一个工程，在设置中Other-Setting–-gt-Jpthon-Helper中添加jeb-jar-此处一定要注意选择与Python的对应的平台"><a href="#随便新建一个工程，在设置中Other-Setting–-gt-Jpthon-Helper中添加jeb-jar-此处一定要注意选择与Python的对应的平台" class="headerlink" title="随便新建一个工程，在设置中Other Setting–&gt;Jpthon Helper中添加jeb.jar; 此处一定要注意选择与Python的对应的平台"></a>随便新建一个工程，在设置中<code>Other Setting</code>–&gt;<code>Jpthon Helper</code>中添加jeb.jar; 此处一定要注意选择与Python的对应的平台</h3><p><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhppbg6ynyj20sd089mxf.jpg" alt=""></p>
+<h3 id="右键选择Jpthon-Helper就可以生成对应的skeleton，-此时就可以有基本的代码补全了。"><a href="#右键选择Jpthon-Helper就可以生成对应的skeleton，-此时就可以有基本的代码补全了。" class="headerlink" title="右键选择Jpthon Helper就可以生成对应的skeleton， 此时就可以有基本的代码补全了。"></a>右键选择<code>Jpthon Helper</code>就可以生成对应的<code>skeleton</code>， 此时就可以有基本的代码补全了。</h3></blockquote>
+<h2 id="2-第一个测试程序"><a href="#2-第一个测试程序" class="headerlink" title="2. 第一个测试程序"></a>2. 第一个测试程序</h2><p><code>hello.py</code>要注意文件名和类名一致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from jeb.api import IScript</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Hello(IScript):</span><br><span class="line">    def run(self, j):</span><br><span class="line">        self.instance = j</span><br><span class="line">        self.instance.print(&quot;hello jebScripts&quot;)</span><br></pre></td></tr></table></figure>
+<p>将脚本拷贝到jeb/scripts目录中，在jeb的菜单中选择Run Scripts, 选中Hello.py即可看到输出了<code>hello jebScripts</code>; 一个脚本就写好了。</p>
+<p><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhppvzbqs2j20df02wwea.jpg" alt=""></p>
+<h3 id="如果想要进阶的话可以参看一下文章以及官方文档"><a href="#如果想要进阶的话可以参看一下文章以及官方文档" class="headerlink" title="如果想要进阶的话可以参看一下文章以及官方文档"></a>如果想要进阶的话可以参看一下文章以及官方文档</h3><p><a href="http://www.cnblogs.com/bingghost/p/5792972.html" target="_blank" rel="external">JEB 1.5插件编写一</a><br><a href="http://www.cnblogs.com/bingghost/p/5792974.html" target="_blank" rel="external">JEB1.5 插件编写二</a><br><a href="https://www.secpulse.com/archives/33922.html" target="_blank" rel="external">Android应用分析进阶教程之一 —— 初识JEBAPI</a></p>
+<h3 id="一些比较有用的脚本"><a href="#一些比较有用的脚本" class="headerlink" title="一些比较有用的脚本"></a>一些比较有用的脚本</h3><p><a href="https://github.com/flankerhqd/jebPlugins" target="_blank" rel="external">反混淆的一些脚本</a></p>
+<h2 id="3-文档介绍"><a href="#3-文档介绍" class="headerlink" title="3. 文档介绍"></a>3. 文档介绍</h2><h3 id="3-1-主要的包"><a href="#3-1-主要的包" class="headerlink" title="3.1 主要的包"></a>3.1 主要的包</h3><p><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq0jdu88j20if0a70tu.jpg" alt=""></p>
+<h3 id="3-2-AST-API结构"><a href="#3-2-AST-API结构" class="headerlink" title="3.2 AST API结构"></a>3.2 AST API结构</h3><p>所有的AST Element实现jeb.api.ast.IElement<br>要么继承于jeb.api.ast.NonStatement,要么继承于jeb.api.ast.Statement</p>
+<p><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq1ljg9zj20dw06p3yu.jpg" alt=""></p>
+<p>IElement定义了getSubElements,但不同类型的实现和返回结果也不同,例如:</p>
+<h4 id="1-对Method进行getSubElements返回"><a href="#1-对Method进行getSubElements返回" class="headerlink" title="1. 对Method进行getSubElements返回"></a>1. 对Method进行getSubElements返回</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">函数的参数定义语句</span><br><span class="line">函数体block</span><br></pre></td></tr></table></figure>
+<h4 id="2-IfStmt会返回"><a href="#2-IfStmt会返回" class="headerlink" title="2. IfStmt会返回"></a>2. IfStmt会返回</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">判断使用的Predicate</span><br><span class="line">每一个if/else/ifelse语句块</span><br></pre></td></tr></table></figure>
+<h4 id="3-Assignment语句返回"><a href="#3-Assignment语句返回" class="headerlink" title="3. Assignment语句返回"></a>3. Assignment语句返回</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">左右IExpression操作数</span><br><span class="line">Operator操作符</span><br></pre></td></tr></table></figure>
+<p>具体编写脚本中我们通常并不使用这个函数,而根据具体类型定义的更细致的函数,例如Assignment提供的getLeft和getRight.<br><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq2tk7zhj2095084mxj.jpg" alt=""></p>
+<p>NonStatement与Expression的区别在于,NonStatement包含了一些高阶结构,例如jeb.api.ast.Class, jeb.api.ast.Method这些并不会出现在语句中的AST结构体,他们分别代表一个Class结构和Method结构,注意不要与反射语句中使用的Class和Method混淆<br><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq3143g8j20bp0dxmy2.jpg" alt=""></p>
+<p>Statement顾名思义就代表了一个语句,但值得注意的是这里的语句并不代表单个语句,<br>继承于Compound的Statement中也可能包含其他的Statement</p>
+<p>非Compound的Statement是最基本的语句结构,它的子节点只会由Expression构成而不会包含block. 例如Assignment,可以通过getLeft和getRight调用获得左右两边的操作对象,分别为ILeftExpression和IExpression.ILeftExpression代表可以做左值的Expression,例如变量.而常量显然不实现ILeftExpression接口</p>
+<p>Compound代表多个语句集合的语法块集合,每一个语法块以Block（也是Compound的子类）呈现,通过getBlocks调用获得.所有分支语句均继承Compound</p>
+<p><strong> 如下例子所示: </strong></p>
+<p><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq64dfxgj20ax04r743.jpg" alt=""></p>
+<p>继承于Compound的IfStm,也就是Statement<br>我们通过getBranchPredicate(idx)获取Predict,也就是ztz.isDead()这个Expression,而这个Expression真正的类型是子类Call.<br>我们可以通过getBranchBody(idx)获取if和if-else中的Block,通过getDefaultBlock获取else的Block</p>
+<p><strong> IExpression代表了最基本的AST节点,其实现关系如下图 </strong></p>
+<p><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq37jq6rj20m50ctdh2.jpg" alt=""></p>
+<p>IExpression接口的实现者Expression类代表了算术和逻辑运算的语句片段,例如a+b, “162” + ztz.toString(), !ztz, redrain*(ztz-162)等等,同时Predicate类是Expression类的直接子类,譬如在if(ztz162)中,该语句的Predicate左值为ztz162这个identifier,右值为null.</p>
+<p><strong> 以ztz.test(1) + ”height” + 162这个Expression为例,其结构组成和各节点类型如下：</strong><br><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq3rymokj20gu0bz0to.jpg" alt=""><br>Expression是从右到左的结构<br>Call没有提供获取caller的API,不过可以通过getSubElements()获取,返回顺序为 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">callee method</span><br><span class="line">calling instance (if instance call)</span><br><span class="line">calling arguments, one by one</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jeb/" rel="tag"># jeb</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/11/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">CKCat</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">Tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JEB-1-5脚本编写"><span class="nav-number">1.</span> <span class="nav-text">JEB 1.5脚本编写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-环境配置"><span class="nav-number">1.1.</span> <span class="nav-text">1. 环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#随便新建一个工程，在设置中Other-Setting–-gt-Jpthon-Helper中添加jeb-jar-此处一定要注意选择与Python的对应的平台"><span class="nav-number">1.1.1.</span> <span class="nav-text">随便新建一个工程，在设置中Other Setting–>Jpthon Helper中添加jeb.jar; 此处一定要注意选择与Python的对应的平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#右键选择Jpthon-Helper就可以生成对应的skeleton，-此时就可以有基本的代码补全了。"><span class="nav-number">1.1.2.</span> <span class="nav-text">右键选择Jpthon Helper就可以生成对应的skeleton， 此时就可以有基本的代码补全了。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-第一个测试程序"><span class="nav-number">1.2.</span> <span class="nav-text">2. 第一个测试程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如果想要进阶的话可以参看一下文章以及官方文档"><span class="nav-number">1.2.1.</span> <span class="nav-text">如果想要进阶的话可以参看一下文章以及官方文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些比较有用的脚本"><span class="nav-number">1.2.2.</span> <span class="nav-text">一些比较有用的脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-文档介绍"><span class="nav-number">1.3.</span> <span class="nav-text">3. 文档介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-主要的包"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 主要的包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-AST-API结构"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 AST API结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-对Method进行getSubElements返回"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">1. 对Method进行getSubElements返回</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-IfStmt会返回"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">2. IfStmt会返回</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Assignment语句返回"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">3. Assignment语句返回</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CKCat</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
