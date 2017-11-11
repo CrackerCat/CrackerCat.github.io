@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>CKCat Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-11-11T08:54:00.785Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>CKCat</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://yoursite.com/2017/11/11/test/"/>
+    <id>http://yoursite.com/2017/11/11/test/</id>
+    <published>2017-11-11T08:53:20.000Z</published>
+    <updated>2017-11-11T08:54:00.785Z</updated>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="JEB-1-5脚本编写"><a href="#JEB-1-5脚本编写" class="headerlink" title="JEB 1.5脚本编写"></a>JEB 1.5脚本编写</h1><h2 id="1-环境配置"><a href="#1-环境配置" class="headerlink" title="1. 环境配置"></a>1. 环境配置</h2><p><strong>如果不需要代码补全功能，可以忽略此步骤 </strong></p><ul><li>IDE环境： PyCharm</li><li>Python版本： Python2.7.6 </li><li>使用<code>JythonHelper</code>插件, 生成skeleton从而有基本的代码补全</li></ul><blockquote><h3 id="随便新建一个工程，在设置中Other-Setting–-gt-Jpthon-Helper中添加jeb-jar-此处一定要注意选择与Python的对应的平台"><a href="#随便新建一个工程，在设置中Other-Setting–-gt-Jpthon-Helper中添加jeb-jar-此处一定要注意选择与Python的对应的平台" class="headerlink" title="随便新建一个工程，在设置中Other Setting–&gt;Jpthon Helper中添加jeb.jar; 此处一定要注意选择与Python的对应的平台"></a>随便新建一个工程，在设置中<code>Other Setting</code>–&gt;<code>Jpthon Helper</code>中添加jeb.jar; 此处一定要注意选择与Python的对应的平台</h3><p><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhppbg6ynyj20sd089mxf.jpg" alt=""></p><h3 id="右键选择Jpthon-Helper就可以生成对应的skeleton，-此时就可以有基本的代码补全了。"><a href="#右键选择Jpthon-Helper就可以生成对应的skeleton，-此时就可以有基本的代码补全了。" class="headerlink" title="右键选择Jpthon Helper就可以生成对应的skeleton， 此时就可以有基本的代码补全了。"></a>右键选择<code>Jpthon Helper</code>就可以生成对应的<code>skeleton</code>， 此时就可以有基本的代码补全了。</h3></blockquote><h2 id="2-第一个测试程序"><a href="#2-第一个测试程序" class="headerlink" title="2. 第一个测试程序"></a>2. 第一个测试程序</h2><p><code>hello.py</code>要注意文件名和类名一致</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from jeb.api import IScript</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Hello(IScript):</span><br><span class="line">    def run(self, j):</span><br><span class="line">        self.instance = j</span><br><span class="line">        self.instance.print(&quot;hello jebScripts&quot;)</span><br></pre></td></tr></table></figure><p>将脚本拷贝到jeb/scripts目录中，在jeb的菜单中选择Run Scripts, 选中Hello.py即可看到输出了<code>hello jebScripts</code>; 一个脚本就写好了。</p><p><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhppvzbqs2j20df02wwea.jpg" alt=""></p><h3 id="如果想要进阶的话可以参看一下文章以及官方文档"><a href="#如果想要进阶的话可以参看一下文章以及官方文档" class="headerlink" title="如果想要进阶的话可以参看一下文章以及官方文档"></a>如果想要进阶的话可以参看一下文章以及官方文档</h3><p><a href="http://www.cnblogs.com/bingghost/p/5792972.html" target="_blank" rel="external">JEB 1.5插件编写一</a><br><a href="http://www.cnblogs.com/bingghost/p/5792974.html" target="_blank" rel="external">JEB1.5 插件编写二</a><br><a href="https://www.secpulse.com/archives/33922.html" target="_blank" rel="external">Android应用分析进阶教程之一 —— 初识JEBAPI</a></p><h3 id="一些比较有用的脚本"><a href="#一些比较有用的脚本" class="headerlink" title="一些比较有用的脚本"></a>一些比较有用的脚本</h3><p><a href="https://github.com/flankerhqd/jebPlugins" target="_blank" rel="external">反混淆的一些脚本</a></p><h2 id="3-文档介绍"><a href="#3-文档介绍" class="headerlink" title="3. 文档介绍"></a>3. 文档介绍</h2><h3 id="3-1-主要的包"><a href="#3-1-主要的包" class="headerlink" title="3.1 主要的包"></a>3.1 主要的包</h3><p><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq0jdu88j20if0a70tu.jpg" alt=""></p><h3 id="3-2-AST-API结构"><a href="#3-2-AST-API结构" class="headerlink" title="3.2 AST API结构"></a>3.2 AST API结构</h3><p>所有的AST Element实现jeb.api.ast.IElement<br>要么继承于jeb.api.ast.NonStatement,要么继承于jeb.api.ast.Statement</p><p><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq1ljg9zj20dw06p3yu.jpg" alt=""></p><p>IElement定义了getSubElements,但不同类型的实现和返回结果也不同,例如:</p><h4 id="1-对Method进行getSubElements返回"><a href="#1-对Method进行getSubElements返回" class="headerlink" title="1. 对Method进行getSubElements返回"></a>1. 对Method进行getSubElements返回</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">函数的参数定义语句</span><br><span class="line">函数体block</span><br></pre></td></tr></table></figure><h4 id="2-IfStmt会返回"><a href="#2-IfStmt会返回" class="headerlink" title="2. IfStmt会返回"></a>2. IfStmt会返回</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">判断使用的Predicate</span><br><span class="line">每一个if/else/ifelse语句块</span><br></pre></td></tr></table></figure><h4 id="3-Assignment语句返回"><a href="#3-Assignment语句返回" class="headerlink" title="3. Assignment语句返回"></a>3. Assignment语句返回</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">左右IExpression操作数</span><br><span class="line">Operator操作符</span><br></pre></td></tr></table></figure><p>具体编写脚本中我们通常并不使用这个函数,而根据具体类型定义的更细致的函数,例如Assignment提供的getLeft和getRight.<br><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq2tk7zhj2095084mxj.jpg" alt=""></p><p>NonStatement与Expression的区别在于,NonStatement包含了一些高阶结构,例如jeb.api.ast.Class, jeb.api.ast.Method这些并不会出现在语句中的AST结构体,他们分别代表一个Class结构和Method结构,注意不要与反射语句中使用的Class和Method混淆<br><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq3143g8j20bp0dxmy2.jpg" alt=""></p><p>Statement顾名思义就代表了一个语句,但值得注意的是这里的语句并不代表单个语句,<br>继承于Compound的Statement中也可能包含其他的Statement</p><p>非Compound的Statement是最基本的语句结构,它的子节点只会由Expression构成而不会包含block. 例如Assignment,可以通过getLeft和getRight调用获得左右两边的操作对象,分别为ILeftExpression和IExpression.ILeftExpression代表可以做左值的Expression,例如变量.而常量显然不实现ILeftExpression接口</p><p>Compound代表多个语句集合的语法块集合,每一个语法块以Block（也是Compound的子类）呈现,通过getBlocks调用获得.所有分支语句均继承Compound</p><p><strong> 如下例子所示: </strong></p><p><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq64dfxgj20ax04r743.jpg" alt=""></p><p>继承于Compound的IfStm,也就是Statement<br>我们通过getBranchPredicate(idx)获取Predict,也就是ztz.isDead()这个Expression,而这个Expression真正的类型是子类Call.<br>我们可以通过getBranchBody(idx)获取if和if-else中的Block,通过getDefaultBlock获取else的Block</p><p><strong> IExpression代表了最基本的AST节点,其实现关系如下图 </strong></p><p><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq37jq6rj20m50ctdh2.jpg" alt=""></p><p>IExpression接口的实现者Expression类代表了算术和逻辑运算的语句片段,例如a+b, “162” + ztz.toString(), !ztz, redrain*(ztz-162)等等,同时Predicate类是Expression类的直接子类,譬如在if(ztz162)中,该语句的Predicate左值为ztz162这个identifier,右值为null.</p><p><strong> 以ztz.test(1) + ”height” + 162这个Expression为例,其结构组成和各节点类型如下：</strong><br><img src="https://ws1.sinaimg.cn/large/aa59003aly1fhpq3rymokj20gu0bz0to.jpg" alt=""><br>Expression是从右到左的结构<br>Call没有提供获取caller的API,不过可以通过getSubElements()获取,返回顺序为 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">callee method</span><br><span class="line">calling instance (if instance call)</span><br><span class="line">calling arguments, one by one</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;JEB-1-5脚本编写&quot;&gt;&lt;a href=&quot;#JEB-1-5脚本编写&quot; class=&quot;headerlink&quot; title=&quot;JEB 1.5脚本编写&quot;&gt;&lt;/a&gt;JEB 1.5脚本编写&lt;/h1&gt;&lt;h2 id=&quot;1-环境配置&quot;&gt;&lt;a href=
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2017/11/11/hello-world/"/>
+    <id>http://yoursite.com/2017/11/11/hello-world/</id>
+    <published>2017-11-11T08:47:28.409Z</published>
+    <updated>2017-11-11T08:47:28.410Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
